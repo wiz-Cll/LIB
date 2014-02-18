@@ -1,0 +1,409 @@
+/*-------  body 样式配置项  --------*/
+@fontFamily: 'Microsoft Yahei', '微软雅黑', 'STHeiti', 'SimHei', 'SimSun';
+@fontFamily_ie: 'SimSun';
+@bodyH: 400px;
+@bodyW: 900px;
+
+/*-------  aside样式配置项  --------*/
+@asideBGC: #02111B;
+@asideW: 200px;
+@asideH: 100%;
+
+@shortcutC: #6f767c;
+
+/*-------  main样式配置项  --------*/
+// @mainBGC: #fff;
+@mainBGC: #E6EBF5;
+@mainML: @asideW;
+@mainP: 16px;
+
+/*-------  header样式配置项  --------*/
+@headerH: 50px;
+@headerW: 100%;
+@headerBGC: #359BDC;
+@headerBBC: #2B85C3;
+@headerBBH: 3px;
+@headerZindex: 2000;
+
+@scEntryLiTop: 6px;
+@scEntryUlPT: 16px;
+@scEntryLiH: 2px;
+@liRotateT: 300ms;
+@liTopT: 300ms;
+@scEntryRotate: 35deg;
+
+@avatarH: 40px;
+@avatarMenuH: 40px;
+@userInfoBC: #2C87C5;
+
+@userMsgPopH: 300px;
+@userMsgPopW: 200px;
+
+@userSettingPopW: 100px;
+@userSettingPopH: 150px;
+
+
+@headerPRL: 16px;
+/*--------------- sysmsg样式  ---------------*/
+@sysmsgZindex: 1600;
+
+/*-------  section的通用 样式配置项  --------*/
+// margin-top  MT
+@sectionMT: 15px;
+// 通过relative + absolute + top/bottom实现 类height100%的布局
+@contentAB: @headerH + @headerBBH + @sectionMT + 3;
+@contentBC: #B8BCC4;
+@toolbarH: 30px;
+@toolbarFontSize: 14px;
+
+/*-------  消息/文件夹树 可伸缩 样式配置项  --------*/
+@menuLayerHoverBBC: #F7F7F7;
+
+@menuTreeW: 290px;
+@menuThinW: 48px;
+@menuTreeBGC: #fff;
+
+@menuToolbarBGC: #E6EBF5;
+@nailBGC: #919192;
+@nailLiTopUnit: 0;
+
+
+@menuLiH: 34px;
+@menuLiMTB: 5px;
+@menuIconTop: 7px;
+@menuIconLeft: 13px;
+@menuDcbLMargin: @menuIconLeft + @iconMW;
+@menuDcbLPadding: 10px ;
+@menuDcbT: 5px;
+@menuDcbP: 12px;
+@menuCollapseBGC: rgba(6, 25, 36, 0.92);
+@menuCollapseBGC_ie: #061924;
+@searchInputH: 30px;
+/*-------  近期笔记/搜索结果 note-list 样式配置项  --------*/
+@noteListW: 340px;
+@noteListBGC: #fff;
+@noteListML: @mainP*0.5;
+    /*-------  笔记列表/消息列表 样式配置项  --------*/
+    @unreadC: #CBEAFA;
+    @readenC: #F5F5F5;
+    @readingC: @unreadC;
+    @msgbodyTriW: 8px;
+    /*------------  摘要样式  -------------*/
+    @absImageW: 80px;
+
+/*-------  阅读笔记的区域 样式配置项  --------*/
+@readML: @menuTreeW + @noteListW + @mainP*3;
+@readLargeML: @menuThinW + @noteListW + @mainP*3;
+
+@noteTitleCtnBGC: #FCFCFC;
+@noteTitleCtnH: 48px;
+@noteTitleCtnP: 12px;
+
+@readP: 20px;
+
+@noteAddonBBC: #EDEDED;
+@addonListPreW: 35px;
+@addonListMoreW: 40px;
+@tagLiBGC: #FFF7B5;
+
+@edittagCtnBGC: #fff;
+@edittagCtnBC: #bebebe;
+@tagNotInBGC: #fff;
+@tagC: #444;
+@tagNotInBC: #ebebeb;
+@tagInBGC: #d7ebf8;
+@tagInBC: @headerBGC;
+@newTagCtnBC: @tagNotInBC;
+@newTagCtnBGC: #fafafa;
+@nteTagInputC: #c1c1c1;
+@newTagInputBC: #cdcdcd;
+@newTagInputFocusBC: @headerBGC;
+@nteTagInputFocusC: #000;
+
+
+@confirmAddTagBtnW: 50px;
+
+@attachIconW: @iconW;
+
+@addTagBtnW: 25px;
+
+/*-------  首页mask 样式配置项  --------*/
+@indexBGC: #E5EAF4;
+@bookW: 190px;
+@bookBGC: #359BDC;
+@bookMLR: 35px;
+@tbcBC: #D3D6E0;
+
+/*-------  msg 样式配置项  --------*/
+@msgH: 35px;
+@sucBGC: #EEFAB9;
+@sucBorderC: #95C11A;
+@errBGC: #F8CAC0;
+@errBorderC: #E3553C;
+@warnBGC: #FEE9AD;
+@warnBorderC: #F1AF30;
+
+
+
+/*-------  widgets: loading/dialog样式配置项  --------*/
+@loadingCttH: 120px;
+@loadingCttW: 120px;
+@loadingBGC: #fcfcfc;
+
+@confirmModalW: @uploadModalW;
+
+@uploadModalW: 400px;
+@uploadModalH: 180px;
+
+@modalTopC: #F4F4F4;
+@modalTopBBC: #D2D2D2;
+@modalBottomBTC: @modalTopBBC;
+
+@progressBGC: @modalTopC;
+@progressDoneBGC: @headerBGC;
+
+
+@btnH: 30px;
+@btnBC: @contentBC;
+
+// @btnHoverBGC: #;
+@btnHoverBC: #b8b8cc3;
+
+@btnActiveBGC: #fafafa;
+@btnActiveBC: #a1a4ab;
+
+@btnPrimaryBGC: @headerBGC;
+@btnPrimaryBC: @headerBBC;
+
+@btnPrimaryHoverBGC: #32aaf5;
+@btnPrimaryHoverBC: #2385c3;
+@btnPrimaryActiveBGC: @headerBGC;
+@btnPrimaryActiveBC: #0f78be;
+
+@iconW: 16px;
+// 中等大小
+@iconMW: 20px;
+
+@iconBGPU: 25px;
+
+.iconPos( @x:1, @y:1, @deltaX:0, @deltaY: 0 ){
+    background-position: -((@x - 1)*@iconBGPU + @deltaX) -( (@y - 1)*@iconBGPU + @deltaY);
+}
+.btnState( @hoverBGC, @hoverBC, @activeBGC, @activeBC ){
+    &:hover{
+        background-color: @hoverBGC;
+        border: 1px solid @hoverBC;
+    }
+    &:active{
+        background-color: @activeBGC;
+        border-color: @activeBC;
+    }
+    
+}
+
+/*-------  config中定义的一些通用类 样式配置项  --------*/
+@triW: 10px;
+@triLW: 1.2*@triW;
+
+.clear(){
+    &:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+
+.opacity(@v) {
+    // 函数名冲突的解决方案: alpha()函数和IE的filter: alpha
+    @opacityPercentage: @v;
+	filter: ~"alpha(opacity = @{opacityPercentage})";
+	opacity: @v/100;
+}
+.box-sizing( @val: border-box ){
+    -webkit-box-sizing: @val;
+    -moz-box-sizing: @val;
+    box-sizing: @val;
+}
+.boxshd( @val ){
+    -webkit-box-shadow: @val;
+    -moz-box-shadow: @val;     // no moz according to caniuse
+    box-shadow: @val;
+}
+.boxshd( @v2, @v2 ){
+    -webkit-box-shadow: @v2, @v2;
+    -moz-box-shadow: @v2, @v2;
+    box-shadow: @v2, @v2;
+}
+.boxshd( @v1, @v2, @v3 ){
+    -webkit-box-shadow: @v1, @v2, @v3;
+    -moz-box-shadow: @v1, @v2, @v3;
+    box-shadow: @v1, @v2, @v3;
+}
+.boxshd( @v1, @v2, @v3, @v4 ){
+    -webkit-box-shadow: @v1, @v2, @v3, @v4;
+    -moz-box-shadow: @v1, @v2, @v3, @v4;
+    box-shadow: @v1, @v2, @v3, @v4;
+}
+.bdr( @v ){
+    -webkit-border-radius: @v;
+    -moz-border-radius: @v;
+    border-radius: @v;
+}
+
+// 函数重载```
+.tst( @r: all 300ms ease ){
+    -webkit-transition: @r;
+    -moz-transition: @r;
+    transition: @r;
+}
+.tst( @r1, @r2 ){
+    -webkit-transition: @r1, @r2;
+    -moz-transition: @r1, @r2;
+    transition: @r1, @r2;
+}
+.tst( @r1, @r2, @r3 ){
+    -webkit-transition: @r1, @r2, @r3;
+    -moz-transition: @r1, @r2, @r3;
+    transition: @r1, @r2, @r3;
+}
+.tst( @r1, @r2, @r3, @r4 ){
+    -webkit-transition: @r1, @r2, @r3, @r4;
+    -moz-transition: @r1, @r2, @r3, @r4;
+    transition: @r1, @r2, @r3, @r4;
+}
+.tst( @r1, @r2, @r3, @r4, @r5 ){
+    -webkit-transition: @r1, @r2, @r3, @r4, @r5;
+    -moz-transition: @r1, @r2, @r3, @r4, @r5;
+    transition: @r1, @r2, @r3, @r4, @r5;
+}
+.tsf(@v){
+    -webkit-transform: @v;
+    -ms-transform: @v;
+    transform: @v;
+    -webkit-backface-visibility: hidden;
+    
+}
+.tsf-o(@v: 50% 50%;){
+    -webkit-transform-origin: @v;
+    -ms-transform-origin: @v;
+    transform-origin: @v;
+}
+.ani(@v){
+	-webkit-animation:@v;
+	-moz-animation:@v;
+	-ms-animation:@v;
+	-o-animation:@v;
+	animation:@v;
+}
+.ani-delay(@v){
+	-webkit-animation-delay:@v;
+	-moz-animation-delay:@v;
+	-ms-animation-delay:@v;
+	-o-animation-delay:@v;
+	animation-delay:@v;
+}
+
+.user-select( @v: none ){
+    -webkit-user-select: @v;
+    -moz-user-select: @v;
+    -ms-user-select: @v;
+    user-select: @v;
+}
+
+// 遮住整个或大部分窗体的样式,用于页面载入时的loading 个人+biz群组展示
+.mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1000;
+	// .tst( opacity 250ms ease; );
+	.opacity(0);
+	.tst( opacity 250ms ease; bottom 0ms ease 250ms; z-index 0ms ease 250ms;);
+
+    .top{
+        position: relative;
+        padding: 10px 20px;
+        border: none;
+        border-bottom: 1px solid @modalTopBBC;
+        background-color: @modalTopC;
+        h1{
+            margin: 0;
+            font-size: 24px;
+            text-align: left;
+            color: #444;
+        }
+        .close{
+            position: absolute;
+            top: 50%;
+            right: @iconMW/2;
+            margin-top: -@iconMW/2;
+        }
+    }
+    .middle{
+        padding: 20px;
+        min-height: 100px;
+        font-size: 14px;
+    }
+    .bottom{
+        width: 94%;
+        padding: 10px 20px;
+        margin-left: 3%;
+        border: none;
+        border-top: 1px solid @modalBottomBTC;
+        .clear();
+        
+        .btn-group{
+            float: right;
+        }
+        .btn{
+            height: auto;
+            padding: 5px 15px;
+            font-size: 14px;
+        }
+    }
+}
+
+// 弹出小图层的通用样式
+// 这里只负责将before伪类定位在中间
+// 在IE8下有点小bug: 会显示两个before伪元素```
+.pop-float{
+    position: absolute;
+    z-index: -1000;
+	.opacity(0);
+    .tst( opacity 250ms ease; z-index 0ms ease 250ms; height 0ms ease 250ms; padding 0ms ease 250ms;);
+
+    &:before{
+        content: '';
+        display: none;
+        position: absolute;
+
+        border: @triW solid transparent;
+    }
+    &.pop-right:before{
+        border-left: @triLW solid #fff;
+    }
+
+    &.pop-top:before{
+        border-bottom: @triLW solid #fff;
+        top: -2.2*@triW;
+        left: 50%;
+        margin-left: -0.5*@triLW;
+    }
+
+    &.pop-left:before{
+        border-right: 0.8*@triLW solid #fff;
+        left: -1.9*@triW;
+        // height: 30px;
+        // width: 30px;
+        // border: 5px solid #359BDC;
+        // background-color: #2C87C5;
+        top: 25%;
+        // margin-top: -1.25*@triLW;
+    }
+    &.pop-bottom:before{
+        border-top: @triLW solid #fff;
+    }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端路由的实现</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="router.js"></script>
+    <style>
+        a{
+            margin: 0 1em;
+        }
+    </style>
+</head>
+<body>
+    <h2>思想:</h2>
+    <p>绑定 "url &lt;--&gt; 处理函数"的对应关系, 预先绑定</p>
+    <p>提供两个方法: bind 和 go, 即: 绑定路由 和 push一个url并按照路由执行.</p>
+    <p>同时, 会监听popState事件, 针对新的url进行路由响应</p>
+    <p>三种模式: pathname / search / hash </p>
+    <p>其中前两种需要现代浏览器的支持, 最后一种可以作为低版本IE的降级处理</p>
+    <ol>
+        <li>pathname: manage/biz/login 或者 manage/biz/register, 与nodejs中express的路由一致</li>
+        <li>search: https://note.wiz.cn/web?cmd=kw 或者 https://note.wiz.cn/web?cmd=msg</li>
+        <li>hash: 代表性的是twitter的url: /#!/foo=bar</li>
+    </ol>
+
+    <a href="javascript:void(0);" data-url="/LIB/router/writer">/LIB/router/writer</a>
+    <a href="javascript:void(0);" data-url="/LIB/router/writer/fooid">/LIB/router/writer/:id</a>
+    <a href="javascript:void(0);" data-url="/LIB/router/comment">/LIB/router/comment</a>
+    <a href="javascript:void(0);" data-url="/LIB/router/comment/barid">/LIB/router/comment/:id</a>
+
+    <script>
+        router.bind('/LIB/router/writer', function(){});
+        router.bind('/LIB/router/writer/:id', function(){});
+        router.bind('/LIB/router/comment', function(){});
+        router.bind('/LIB/router/comment/:id', function(){});
+        // router.bind('/LIB/router/art/:id', function(){});
+        // router.bind('/LIB/router/comment', function(){});
+
+
+        function testRoute( e ){
+            var url = e.target.getAttribute( 'data-url' );
+            router.go( url );
+        }
+        $('a').bind('click', testRoute);
+
+    </script>
+</body>
+</html>

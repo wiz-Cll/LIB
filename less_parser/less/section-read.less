@@ -1,0 +1,448 @@
+@import "config.less";
+
+
+section#read{
+    margin-left: @readML;
+    margin-right: @mainP;
+	&.empty {
+		.btn-group, .icongroup, .noteaddon-ctn, #comment-ctn {
+			display:none;
+		}
+	}
+
+    .icongroup{
+        position: absolute;
+        top: 50%;
+        margin: -(@iconW/3) 15px 0 0;
+        // float: right;
+        right: 0;
+
+        .icon{
+            margin-left: 15px;
+        }
+    }
+
+    .toolbar{
+        .btn-group{
+            float: left;
+            .btn{
+                display: block;
+                line-height: 14px;
+                font-size: 14px;
+                padding-top: 6px;
+                padding-bottom: 0px;
+                vertical-align: top;
+            }
+            #edit-btn{
+
+            }
+            #edit-btn, #save-btn, #dropnew-btn{
+                float: left;
+            }
+            #save-btn, #backtoread-btn, #dropnew-btn{
+                display: none;
+            }
+            #save-btn{
+                margin-right: 10px;
+            }
+
+            &.dropable{
+                #backtoread-btn{
+                    display: none;
+                }
+                #dropnew-btn{
+                    display: block;
+                }
+            }
+        }
+        
+        .icongroup{
+            // top: 50%;
+            #docinfo-ctn{
+                height: 0px;
+                width: 300px;
+                .opacity(0);
+                top: 25px;
+				margin-left: -200px;
+                background-color: #fff;
+                border: 2px solid @headerBGC;
+                .tst( opacity 250ms ease; z-index 0ms ease 250ms; height 0ms ease 250ms;);
+
+                &:before{
+                    display: block;
+                    border-width: 6px;
+					top: -14px;
+					margin-left: 68px;
+                    border-bottom-color: @headerBGC;
+					.opacity(0);
+					.tst();
+                }
+
+                #docinfo-ul{
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    li{
+                        height: 40px;
+                        width: 100%;
+                        .key, .val{
+                            .box-sizing();
+                            line-height: 40px;
+                            height: 100%;
+                            font-size: 14px;
+                        }
+                        .key{
+                            display: inline-block;
+                            float: left;
+                            
+                            width: 100px;
+                            text-align: right;
+                            padding-right: 10px;
+                            color: #888;
+
+                            background-color: #F5FAFD;
+                            border: none;
+                            border-right: 1px solid fadeOut(@headerBGC,50%);
+                        }
+                        .val{
+                            display: block;
+
+                            margin: 0 0 0 110px;
+                            max-width: 200px;
+                            color: #999;
+
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+
+                            a{
+                                color: @headerBGC;
+                            }
+                        }
+                    }
+                }
+            }
+            &.info #docinfo-ctn{
+                height: 204px;
+				.opacity(100);
+                .tst( opacity 250ms ease; z-index 0ms ease; height 0ms ease;);
+
+                z-index: 1500;
+                &:before{
+					.opacity(100);
+                }
+            }
+        }
+    }
+
+    .content{
+        .notetitle-ctn{
+            height: @noteTitleCtnH;
+            padding: 12px 10px;
+            .box-sizing();
+            background-color: @noteTitleCtnBGC;
+            // .boxshd( inset 0 0 3px rgba(0,0,0,0.5););
+
+            position: relative;
+//			overflow: hidden;
+
+            h2{
+                position: absolute;
+                left: @readP;
+                right: 170px;
+                margin: 0;
+                font-size: 20px;
+                line-height: 1.35;
+                font-weight: normal;
+                float: left;
+
+                // max-width: @noteTitleHW-XXXL;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            #edit-title{
+                display: none;
+                position: absolute;
+                left: @readP;
+                right: 170px;
+                // input表单元素在IE和火狐下不会因为pos-a + left + right而撑宽, 所以加一个宽度
+                width: 90%;
+                height: 24px;
+                line-height: 1.35;
+                border: none;
+                border-bottom: 1px solid #444;
+                background-color: @noteTitleCtnBGC;
+                outline: none;
+                overflow-x: hidden;
+            }
+            #edit-title.show{
+                display: block;
+            }
+			/*-----------------------@ AutoComplete--------------------------*/
+			#edit-title, .txtForCaret {
+				margin-top: 0px;
+				margin-left: 0px;
+				padding: 0;
+
+				font-size: 20px;
+				line-height: 1.35;
+
+				overflow-y: auto;
+				background: transparent;
+				-webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.1);
+				box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.1);
+			}
+			#edit-title:focus {
+				// background: #fff;
+			}
+			.txtForCaret {
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 5px 0 0 10px;
+				z-index: -1;
+				filter: alpha(opacity=0);
+				opacity: 0;
+				word-wrap: break-word;
+//				word-break: break-all;
+				color:rgb(165, 213, 236);
+				white-space:nowrap;
+				line-height: 1.4em;
+				b {
+					display: inline-block;
+					margin-left: -10px;
+					width: 10px;
+					overflow: hidden;
+				}
+			}
+			.atWrap {
+				display:none;
+				-webkit-animation-name: opacity;
+				-webkit-animation-duration: 0.3s;
+				-webkit-animation-timing-function: ease-in-out;
+				width: 280px;
+				position: absolute;
+				z-index: 1300;
+				line-height: 1.231;
+				border: 1px solid #ADADAD;
+				overflow-x: hidden;
+				background: #fff;
+				font-size: .8em;
+				.tips {
+					margin: 0 1px 1px;
+					padding: 5px 8px 4px;
+					color: #999;
+					background: #F5F5F5;
+				}
+			}
+			.autoCmt {
+				max-height: 242px;
+				overflow-y: auto;
+				overflow-x: hidden;
+				ul {
+					padding: 0;
+					margin: 0;
+					li {
+						height: 20px;
+						overflow: hidden;
+						margin: 1px 0 2px;
+						white-space: nowrap;
+						cursor: pointer;
+						&.on {
+							background: #D2E9FA;
+						}
+						a {
+							display: inline-block;
+							padding: 3px 0 0 5px;
+							height: 17px;
+							_zoom: 1;
+							color: #333;
+						}
+					}
+
+				}
+			}
+			/*-----------------------@ AutoComplete--------------------------*/
+
+			.icongroup{
+                position: static;
+                float: right;
+                font-size: 0;
+                // top: 0;
+                // margin: -(@noteTitleCtnH - @noteTitleCtnP - @iconMW) 0 0 0;
+                margin: 2px 4px 0 0;
+                .icon{
+                    margin-left: 15px;
+                    color: @headerBGC;
+                }
+                span{
+                    position: relative;
+                    top: -2px;
+                    display: inline-block;
+                    line-height: 22px;
+                    font-size: 12px;
+                    color: #666;
+                }
+                .cmt-count{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        // problem: 笔记内容区域如何独立于content中的上面两个元素
+        // 现有方案: 在上面两个元素发生改变是变化noteceontent-ctn的top值
+        .notecontent-ctn{
+            width: 100%;
+            overflow: auto;
+            position: absolute;
+            bottom: 0;
+            // background-color: #accded;
+            #ifram-wrapper{
+                padding: 0 @readP;
+            }
+            iframe#wiz_doc_iframe, iframe#baidu_editor_0{
+                min-width: 100%;
+//                min-height: 400px;
+                border: none;
+                outline: none;
+                font-family: @fontFamily !important;
+
+                html, body{
+                    margin: 0;
+                    padding: 0;
+                    font-family: @fontFamily !important;
+                    p{
+                        font-family: @fontFamily !important;
+                    }
+                }
+            }
+
+            #comment-ctn{
+                width: 100%;
+                min-height: 100px;
+            }
+            #notecontent-loading{
+                bottom: 0;
+				background-color: #fcfcfc;
+                color: #fff;
+                text-align: center;
+            }
+            &.loading{
+                overflow: hidden;
+            }
+            &.loading #notecontent-loading{
+                // position: absolute;
+                z-index: 1300;
+				.opacity(100);
+            }
+        }
+
+        #wiz-editor-wrapper{
+            
+			visibility: hidden;
+			height:0;
+			overflow: hidden;
+        }
+
+        #note-loading{
+            bottom: 0;
+            color: #fff;
+            text-align: center;
+			background-color: @loadingBGC;
+			.loading-content {
+				height: @loadingCttH/2;
+				width: @loadingCttW/2;
+				line-height:@loadingCttH/2;
+				margin-top: -@loadingCttH/4;
+				margin-left: -@loadingCttW/4 - 10;
+				white-space: nowrap;
+				span {
+					padding-top: @loadingCttH/2;
+					display: inline-block;
+                    position: relative;
+                    left: -0.5em;
+				}
+			}
+        }
+        &.loading{
+            overflow: hidden;
+        }
+        &.loading #note-loading{
+            // position: absolute;
+            z-index: 1350;
+			.opacity(90);
+        }
+    }
+}
+section#read.new-note{
+//	&.groupnote .noteaddon-ctn{
+//		padding: 0;
+//	}
+	.noteaddon-ctn {
+		.taglist, .attachlist {
+			display:none;
+		}
+
+	}
+}
+section#read.groupnote{
+	.content {
+		.noteaddon-ctn{
+			.taglist.tag-editable {
+				display:none;
+			}
+		}
+		.taglist{
+			display: none;
+		}
+	}
+}
+section#read.edit{
+    .toolbar{
+        #edit-btn{
+            display: none;
+        }
+        #save-btn, #backtoread-btn{
+            display: inline-block;
+        }
+    }
+    .content{
+        .icongroup{
+            display: none;
+        }
+		.noteaddon-ctn .category-ctn {
+			display: block;
+		}
+    }
+    #ifram-wrapper{
+        display: none;
+    }
+    #comment-ctn{
+        display: none;
+    }
+    #wiz-editor-wrapper{
+		visibility: visible;
+		height: auto;
+		overflow: visible;
+        margin: 0;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+    }
+	//for ueditor
+    #edui1{
+        border: none;
+        #baidu_editor_0{
+            padding: 0 0 0 @readP;
+			box-sizing: border-box;
+        }
+		.edui-editor-bottomContainer {
+			display: none;
+		}
+    }
+}
+

@@ -1,0 +1,54 @@
+@import "config.less";
+
+section#read .content .noteaddon-ctn{
+    .attachlist{
+        // 默认状态下即可上传附件
+        #addAttachBtn{
+            display: block;
+        }
+        #attach-ul{
+            margin: 0 0 0 @addonListPreW + @addTagBtnW;
+            padding: 3px 0 0 2px;
+            height: 20px;
+            &.more{
+                // overflow: auto;
+                height: auto;
+            }
+
+            li{
+                cursor: pointer;
+                display: block;
+                float: left;
+                // 由于删除按钮的存在, 就有个一个@iconW的空闲在右边
+                margin: -5px 6px 8px 0;
+                .icon{
+                    position: relative;
+                    top: 3px;
+                    margin-right: 2px;
+                }
+                a{
+                    display: inline-block;
+                    text-decoration: none;
+                    color: inherit;
+                    max-width: 100px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+                .delete-attach{
+                    position: relative;
+                    opacity: 0;
+                    top: 2px;
+                    // left: -@iconW;
+                    left: 0;
+                    z-index: 20;
+                    background-color: #fff;
+                    .tst();
+                }
+                &:hover .delete-attach{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

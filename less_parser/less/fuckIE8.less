@@ -1,0 +1,106 @@
+@import "config.less";
+
+// #mask{
+//     display: none;
+// }
+html, body *{
+	font-family: @fontFamily_ie;
+}
+.ztree {
+	background-color: #fff;
+	&#shortcut {
+		background-color: @asideBGC;
+	}
+}
+.ztree *{
+	font-family: @fontFamily_ie;
+}
+#main.menu-collapse{
+    section#menu-tree{
+		&.note, &.msg{
+			.content{
+                li#search input{
+                    background-color: @menuCollapseBGC_ie;
+                }
+				ul li .dcb.pop-float {
+                    min-height: 35px;
+					background-color: @menuCollapseBGC_ie;
+				}
+				ul li .dcb:before{
+					border-right-color: @menuCollapseBGC_ie;
+				}
+				ul li#category .dcb ul.ztree, ul li#tag .dcb ul.ztree {
+					background-color: @menuCollapseBGC_ie;
+				}
+			}
+		}
+    }
+}
+
+header{
+    #sc-entry{
+        ul{
+            li{
+                .tst(top @liTopT ease  @liRotateT; -webkit-transform @liTopT ease;);
+            }
+        }
+        body.focus-sidebar & ul{
+            li.iterm1, li.iterm2,li.iterm3{
+                width: 100%;
+            } 
+            li.iterm1{
+                top: @scEntryUlPT;
+            }
+            li.iterm3{
+                top: @scEntryUlPT + @scEntryLiH*2 + @scEntryLiTop*2;
+            }
+        }
+    }
+}
+#index .kb .biz-setting{
+    top: 2px;
+    margin-left: 3em;
+}
+#index .kb ul li{
+    .bookname, .personalgroup-setting, bizgroup-setting{
+	   background-color: rgb(2, 17, 27);
+    }
+}
+
+section#menu-tree div.content ul li#search input {
+	background-color: rgb(255, 255, 255);
+}
+#main.menu-collapse section#menu-tree.note .content.search li#search .dcb input {
+	background-color: rgb(255, 255, 255);
+}
+section#read .content{
+    .noteaddon-ctn .taglist #addtag {
+        background-color: @headerBGC;
+    }
+    .notetitle-ctn #edit-title{
+        height: 28px;
+    }
+}
+section#note-list #notelist-tool #sort-rule:before, section#read .toolbar .icongroup #docinfo-ctn:before {
+    display: none;
+}
+section#note-list #notelist-tool.sort #sort-rule:before, section#read .toolbar .icongroup.info #docinfo-ctn:before {
+    display: block;
+}
+section#note-list.doclist.personal .note-list-item .doclist-noteinfo .abstract img.abs-image {
+	max-width: none;
+}
+
+#confirm #confirm-cover, #upload-attach #attach-cover{
+    background-color: #000;
+    filter: alpha(opacity=65);
+}
+#confirm #confirm-content, #upload-attach #attach-content{
+    filter: alpha(opacity=100);
+}
+
+
+
+#_wiz_error_div, #_wiz_warning_div, #_wiz_suc_div{
+	min-height: @headerH - 4 - (floor(@headerH - 4 - 16px)/2) - (floor(@headerH - 4 - 16px)/2);
+}

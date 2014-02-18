@@ -1,0 +1,344 @@
+@import "config.less";
+
+section#note-list{
+    float: left;
+    margin-left: @noteListML;
+    width: @noteListW;
+	.toolbar{
+		#notelist-tool{
+			visibility: hidden;
+		}
+	}
+    #path{
+		color: #555;
+        float: left;
+        height: @toolbarH;
+        max-width: 160px;
+        padding-top: 4px;
+		margin-left:2px;
+		font-size: @toolbarFontSize;
+        // line-height: @toolbarH;
+        vertical-align: baseline;
+        overflow: hidden;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        .box-sizing();
+    }
+    
+    #notelist-tool{
+        position: relative;
+        float: right;
+        #note-sort{
+            float: left;
+            margin-right: 4px;
+            background-color: transparent;
+            border: none;
+			padding-right: 6px;
+            .icon-sortstring{
+                position: relative;
+                top: 1px;
+            }
+            .icon-unfold{
+                position: relative;
+                left: 2px;
+                .iconPos(1, 5);
+                // .tst();
+            }
+        }
+        #create-btn{
+            // position: relative;
+            display: block;
+            margin-left: 50px;
+            line-height: 14px;
+            font-size: 14px;
+            padding: 6px 8px 0 8px;
+            vertical-align: top;
+            // .btnState( @btnH, 6px, 8px, @btnPrimaryActiveBC);
+        }
+        
+        
+        #sort-rule{
+            // width: 118px;
+            // height: 0;
+            padding: 0;
+            left: 0;
+            // top: @toolbarH + @triW*1.2;
+            top: @toolbarH + 5px;
+            background-color: #fff;
+            border: 2px solid @headerBGC;
+			.opacity(0);
+			.boxshd( 0 0 5px fadeout(@headerBGC, 50%););
+            .tst( opacity 300ms ease; z-index 0ms ease 300ms; height 0ms ease 300ms; min-height 0ms ease 300ms; );
+            &:before{
+                display: block;
+                border-width: 6px;
+                left: (50px - 6px)/2;
+                top: -14px;
+                border-bottom-color: @headerBGC;
+				.opacity(0);
+            }
+            ul{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                li{
+                    margin: 0;
+                    padding: 11px 11px 11px 15px;
+                    cursor: pointer;
+                    color: #888;
+                    .tst();
+                    &:hover{
+                        background-color: @menuLayerHoverBBC;
+                        color: #000;
+                    }
+                    span{
+                        position: relative;
+                        font-size: 14px;
+                        line-height: 20px;
+                        top: -2px;
+                    }
+                    .icon-middle{
+                        position: relative;
+                        top: 2px;
+                    }
+                    .icon-group .icon{
+                        position: relative;
+                        top: 2px;
+                        .tst( transform 350ms ease 120ms;);
+                    }
+                    // 当前排序方式的样式
+                    &.active{
+                        color: #272727;
+						background-color: @readingC;
+                        &.asc{
+                            .icon-asc{
+                                .iconPos(1, 44);
+                            }
+                        }
+                        &.desc{
+                            .icon-desc{
+                                .iconPos(1, 43);
+                            }
+                        }
+                        
+                    }
+                    &:hover{
+                        background-color: #ececec;
+                    }
+                    // "非当前排序方式"菜单的样式
+                    //      非当前 hover时只做背景的变化
+                    &.desc{
+                        .icon-desc{
+                            .iconPos(2, 43);
+                        }
+                        .icon-asc{
+                            display: none;
+                        }
+                    }
+                    &.asc{
+                        .icon-desc{
+                            display: none;
+                        }
+                        .icon-asc{
+                            .iconPos(2, 44);
+                        }
+                    }
+                }
+            }
+        }
+        &.sort{
+            .icon-unfold{
+                .tsf(rotate(180deg));
+            }
+            #sort-rule{
+                z-index: 1210;
+                min-height: 96px;
+				.opacity(100);
+                .tst( opacity 300ms ease;);
+                &:before{
+					.opacity(100);
+                }
+            }
+        }
+        &>#note-sort{
+            .icon-sortstring,.icon-sortmodify,.icon-sortcreate, .icon-desc, .icon-asc{
+                display: none;
+				position: relative;
+				top: 3px;
+            }
+            .icon-desc, .icon-asc{
+                margin-left: -5px;
+            }
+            .icon-unfold{
+                margin-left: -10px;
+				position: relative;
+				top: 1px;
+				left: 4px;
+            }
+        }
+        &[data-sortprop="document_title"]>#note-sort{
+            .icon-sortstring{
+                display: inline-block;
+            }
+        }
+        &[data-sortprop="dt_data_modified"]>#note-sort{
+            .icon-sortmodify{
+                display: inline-block;
+            }
+        }
+        &[data-sortprop="dt_created"]>#note-sort{
+            .icon-sortcreate{
+                display: inline-block;
+            }
+        }
+        &[data-sortorder="desc"]>#note-sort{
+            .icon-desc{
+            // display: inline-block;
+            }
+        }
+        &[data-sortorder="asc"]>#note-sort{
+            .icon-asc{
+            // display: inline-block;
+            }
+        }
+
+    }
+    // 一般的笔记列表  显示 摘要/标题/时间
+    div.content{
+        overflow: auto;
+
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li{
+                margin-bottom: 0px;
+                // min-height: 80px;
+                padding: 16px;
+                // background-color: rgba(224, 215, 168,0.4);
+                border-bottom: 1px solid #F0F0F0;
+                color: #555;
+                cursor: pointer;
+                .box-sizing();
+
+                &:hover{
+                    background-color: #ECECEC;
+                }
+                &.active{
+                    background-color: @readingC;
+                }
+
+                .avt-ctn{
+                    display: none;
+                    margin-right: 8px;
+                    float: left;
+                }
+                img.avt{
+                    height: @avatarMenuH;
+                    width: @avatarMenuH;
+                    .bdr( @avatarMenuH/2 );
+                    .boxshd( 1px 1px 1px rgba(0,0,0,0.25); );
+                }
+
+                h1,h2,h3,h4,p{
+                    margin: 0;
+                    font-weight: normal;
+                    word-wrap: break-word;
+                    // word-break: break-all;
+                    // display: inline-block;
+                }
+                .title{
+                    color: #272727;
+                    font-size: 14px;
+                    line-height: 1.35;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+                }
+                .icon-note{
+                    margin-right: 6px;
+					position: relative;
+					top: 2px;
+                }
+                .doc-title, .msg-body{
+                    margin-left: 3px;
+                    margin-top: 0px;
+                    font-size: 16px;
+                }
+            }
+        }
+        .no-tip{
+            // display: 
+            margin-top: 2em;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #bbb;
+            .opacity( 37.5 );
+        }
+        // 消息列表 显示头像/title 和 时间
+        &.msg{
+            ul{
+                // display: table;
+                li{
+                    padding: 16px;
+                    min-height: 70px;
+                    // display: table-row;
+                    vertical-align: middle;
+                    .title{
+                        margin-left: 3px;
+                        margin-top: 12px;
+                        font-size: 14px;
+                        line-height: 1.35;
+                    }
+                    .abstract{
+                        display: none;
+                    }
+                    .avt-ctn{
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        #notelst-loading{
+            height: 0;
+            color: #fff;
+            .tst( opacity 250ms ease; z-index 0ms ease 250ms; height 0ms ease 250ms;);
+			background-color: @loadingBGC;
+			.loading-content {
+				height: @loadingCttH/2;
+				width: @loadingCttW/2;
+				line-height:@loadingCttH/2;
+				margin-top: -@loadingCttH/4;
+				margin-left: -@loadingCttW/4 - 10;
+				white-space: nowrap;
+				span {
+					padding-top: @loadingCttH/2;
+					display: inline-block;
+                    position: relative;
+                    left: -0.5em;
+				}
+			}
+
+        }
+        &.loading{
+            overflow: hidden;
+            #notelst-loading{
+                // bottom: 0;
+                height: 100%;
+				z-index: 1300;
+				.opacity(90);
+                .tst( opacity 250ms ease;);
+            }
+        }
+    }
+}
+
+// hack for webkit 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    section#note-list{
+    }
+}

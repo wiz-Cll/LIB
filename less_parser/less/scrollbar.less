@@ -1,0 +1,69 @@
+@import "config.less";
+
+@scrollbarBGC-forLight: rgba( 0,0,0,0.125 );
+@scrollthumbBGC-forLight: grey;
+@scrollbarBGC-forDark: rgba( 255,255,255,0.25 );
+@scrollthumbBGC-forDark: rgba( 200,200,200,0.9 );
+
+body, aside, #index, #note-list .content, #menu-tree .content, #read .notecontent-ctn, #cate-select, #edittag-ctn{
+    // 滚动条整体部分
+    &::-webkit-scrollbar{
+        width: 0.4em;
+        height: 0.4em;
+        background-color: @scrollbarBGC-forLight;
+        .opacity(50);
+    }
+    // 滚动条两端的按钮
+    &::-webkit-scrollbar-button{
+        display: none;
+    }
+    // 外层轨道
+    &::-webkit-scrollbar-track{
+    }
+    // 内层轨道，滚动条中间部分（除去）
+    &::-webkit-scrollbar-track-piece{
+        
+    }
+    // （拖动条？滑块？滚动条里面可以拖动的那个，肿么翻译好呢？）
+    &::-webkit-scrollbar-thumb{
+        
+        background-color: @scrollthumbBGC-forLight;
+    }
+    // 边角
+    &::-webkit-scrollbar-corner{
+
+    }
+    // 定义右下角拖动块的样式
+    &::-webkit-resizer{
+
+    }
+}
+
+#main.menu-collapse #menu-tree{
+    #categoryTree, #tagTreeForGroup, #tagTreeForPersonal{
+        &::-webkit-scrollbar{
+            width: 0.4em;
+            height: 0.4em;
+            background-color: @scrollbarBGC-forDark;
+            .opacity(50);
+        }
+        &::-webkit-scrollbar-button{
+            display: none;
+        }
+        &::-webkit-scrollbar-track{
+            
+        }
+        &::-webkit-scrollbar-track-piece{
+            
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: @scrollthumbBGC-forDark;
+        }
+        &::-webkit-scrollbar-corner{
+
+        }
+        &::-webkit-resizer{
+
+        }
+    }
+}

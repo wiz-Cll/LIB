@@ -1,0 +1,81 @@
+@import "config.less";
+#sys-msg {
+	position: absolute;
+	top: -( @headerH + 10px) - 48px;
+	left: 0;
+	right: 0;
+	text-align:center;
+	z-index: 2013;
+//	overflow: hidden;
+	.tst();
+
+	&.active{
+		top: -48px;
+	}
+}
+#_wiz_error_div, #_wiz_warning_div, #_wiz_suc_div{
+	position: relative;
+	top: 48px;
+	display:none;
+    // 图标把消息容器撑大了好多... 
+	min-height: @headerH - 4;
+	overflow: hidden;
+	min-width: 30%;
+	max-width: 100%;
+//    width: 100%;
+    padding: (floor(@headerH - 4 - 16px)/2)  0 (floor(@headerH - 4 - 16px)/2) 0;
+    left: 0%;
+    border-width: 1px;
+    border-style: solid;
+    border-top-style: none;
+    vertical-align: middle;
+    .box-sizing();
+    .boxshd( 0 0 8px rgba(0, 0, 0, 0.45) );
+    .mark{
+        float: left;
+        margin-left: 15px;
+        // margin-top: -1px;
+        cursor: default;
+    }
+    .close{
+        float: right;
+        margin-right: 15px;
+    }
+    .content{
+        display: block;
+        position: relative;
+        // top: 1px;
+        margin: 0 @iconMW + 15px+10px;
+        font-size: 14px;
+        line-height: 16px;
+        color: #444;
+    }
+
+    &:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+}
+#_wiz_suc_div{
+    border-color: @sucBorderC;
+    background-color: @sucBGC;
+}
+
+#_wiz_error_div{
+    border-color: @errBorderC;
+    background-color: @errBGC;
+}
+#_wiz_warning_div{
+    border-color: @warnBorderC;
+    background-color: @warnBGC;
+}
+
+#sys-msg.success #_wiz_suc_div, #sys-msg.error #_wiz_error_div, #sys-msg.warning #_wiz_warning_div{
+    // header的z-index为2000,
+    // 下面section的z-index基数为600
+	display:inline-block;
+	z-index: 2014;
+}

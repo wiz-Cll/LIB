@@ -1,0 +1,211 @@
+@import "config.less";
+
+section#note-list{
+    &.doclist{
+		.toolbar{
+			#notelist-tool{
+				visibility: visible;
+			}
+		}
+		div.content{
+			#doclist-ctn{
+				display: block;
+			}
+			#msglist-ctn{
+				display: none;
+			}
+		}
+	}
+
+
+    &.msglist{
+		.toolbar{
+			#notelist-tool{
+				visibility: hidden;
+			}
+		}
+		div.content{
+			#doclist-ctn{
+				display: none;
+			}
+			#msglist-ctn{
+				display: block;
+			}
+		}
+	}
+    
+    #msglist-ctn{
+        .msg-list-iterm{
+            &:hover{
+                background-color: #ECECEC;
+            }
+            &.active{
+                background-color: @unreadC;
+            }
+        }
+        .sender-avatar{
+            width: @avatarMenuH;
+            height: @avatarMenuH;
+            .bdr( @avatarMenuH/2 );
+            .boxshd( 1px 1px 3px rgba(0,0,0,0.25));
+        }
+        .sender-alias{
+            display: inline-block;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.35;
+            top: -@avatarMenuH/1.8;
+        }
+        .msg-detial{
+            margin: -@avatarMenuH/2.5 0 0  @avatarMenuH+5px;
+            &:after{
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+
+            .msg-body{
+                position: relative;
+                padding: 6px;
+                border: 1px solid #EAEAEA;
+                font-size: 12px;
+                color: #333;
+                background-color: @readenC;
+                .bdr(4px);
+
+                &:before{
+                    position: absolute;
+                    top: -2*@msgbodyTriW;
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border: @msgbodyTriW solid transparent;
+                    border-bottom-color: @readenC;
+                }
+                &.unread{
+                    background-color: @unreadC;
+                    &:before{
+                        border-bottom-color: @unreadC;
+                    }
+                }
+            }
+            
+            .time{
+                float: right;
+            }
+        }
+    }
+
+    #msglist-ctn .sender-avatar, &.doclist.group .avt-ctn{
+        width: @avatarMenuH;
+        height: @avatarMenuH;
+        .bdr( @avatarMenuH/2 );
+        .boxshd( 1px 1px 3px rgba(0,0,0,0.125));
+    }
+    &.doclist.group{
+        .note-list-item{
+            min-height: 70px;
+            .avt-ctn{
+                display: inline;
+                // float: left;
+            }
+            .doclist-noteinfo{
+                height: auto;
+                padding: 2px 0 0 0;
+                margin-left:  @avatarMenuH + 8px;
+                h4.title{
+                    margin-top: 5px;
+                    width: @noteListW - @avatarMenuH - 45px;
+                    font-size: 14px;
+                    line-height: 1.35;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+            .owner{
+                display: inline-block;
+            }
+
+            .time{
+                display: inline-block;
+            }
+        }
+    }
+
+    .owner, .time{
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.35;
+        color: #8C8C8C;
+    }
+    .owner{
+        display: none;
+        float: right;
+        color: darken(#8C8C8C, 30%);
+        max-width: 126px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &.doclist.personal{
+        .note-list-item{
+            min-height: 70px;
+            &:after{
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+
+            .avt-ctn{
+                display: none;
+            }
+            .doclist-noteinfo{
+                .abstract{
+                    padding: 8px 0 0 0;
+
+                    .abstract_text{
+                        font-size: 12px;
+                        line-height: 1.35;
+                        color: #8C8C8C;
+
+                        word-wrap: break-word;
+//                        word-break: break-all;
+                        // margin-right: 116px;
+                    }
+                    div.abs-img-wrap {
+                        margin: 0 0 0 7px;
+                        width: @absImageW;
+                        height: @absImageW;
+                        float: right;
+                        border: 1px solid #d2d2d2;
+                        background-color: #f0f0f0;
+                        overflow: hidden;
+                        text-align: center;
+                        _position: relative;
+                        display: table;
+                    }
+                    div.abs-img-subwrap {
+						width: @absImageW;
+						height: @absImageW;
+                        vertical-align: middle;
+                        display: table-cell;
+                        _position: absolute;
+                        _top: 50%;
+                    }
+                    img.abs-image {
+                        max-height: @absImageW;
+                        max-width: @absImageW;
+                        _position: relative;
+                        _top: -50%;
+                    }
+                }
+                
+            }
+        }
+    }
+}

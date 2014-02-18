@@ -1,0 +1,24 @@
+@import "config.less";
+
+#main{
+    position: relative;
+    z-index: 600;
+
+    background-color: @mainBGC;
+    margin-left: 0;
+    height: 100%;
+
+    .box-sizing();
+    .tst();
+
+    overflow: hidden;
+}
+
+body.focus-sidebar #main{
+    margin-left: @mainML;
+//    .boxshd( 5px 0 10px 5px #000);
+}
+
+// @import "nav.less";
+// @import "reading.less";
+// @import "timeline.less";

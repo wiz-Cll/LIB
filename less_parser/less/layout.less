@@ -1,0 +1,43 @@
+// @author chenllos
+// since 2013.10.11
+
+html, body{
+    height: 100%;
+    min-height: @bodyH;
+    width: 100%;
+    min-width: @bodyW;
+    margin: 0;
+    padding: 0;
+    // webkit浏览器 抗锯齿
+    -webkit-font-smoothing: antialiased; 
+
+    font-family: @fontFamily;
+}
+input {
+    -webkit-font-smoothing: antialiased;
+	font-family: @fontFamily;
+}
+// 隐藏{{}}插值表达式
+[ms-controller],[ms-important]{display:none} 
+
+@import "config.less";
+@import "msg.less";
+@import "aside.less";
+@import "main.less";
+@import "header.less";
+@import "section-menutree.less";
+
+@import "section-notelist.less";
+@import "section-notelist-extend.less";
+
+@import "section-read.less";
+@import "section-read-tag.less";
+@import "section-read-attach.less";
+@import "comment.less";
+@import "attach-uploader.less";
+
+@import "scrollbar.less";
+
+@import "index.less";
+@import "widget.less";
+@import "zTreeStyle.less";

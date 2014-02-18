@@ -1,0 +1,17 @@
+@import "config.less";
+
+#loading-content{
+    height: @loadingCttH + 4px;
+    width: @loadingCttW + 4px;
+    background-image: url('../img/loading_move_big.gif');
+    background-repeat: no-repeat;
+}
+
+section#note-list div.content #notelst-loading .loading-content,
+section#read .content #note-loading .loading-content{
+    height: (@loadingCttH + 4px)/2;
+    width: (@loadingCttW + 4px)/2;
+    background-image: url('../img/loading_move_small.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+}

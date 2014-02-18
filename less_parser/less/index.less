@@ -1,0 +1,163 @@
+@import "config.less";
+
+#index{
+    top: @headerH;
+    // height: 0;
+    bottom: 100%; 
+    padding: 0;
+    overflow: hidden;
+    // display: none;  会导致没有动画,所以只是将高度设为0(没有定义高度)
+    background-color: @indexBGC;
+    .tst( opacity 250ms ease; bottom 0ms ease 250ms;z-index 0ms ease 250ms; padding 0ms ease 250ms;);
+
+    .kb{
+        overflow: hidden;
+        h3{
+            display: inline-block;
+            font-size: 16px;
+            line-height: 1.35;
+            font-weight: normal;
+            margin: 5px 0;
+        }
+        .biz-setting{
+            display: none;
+            position: relative;
+            top: 3px;
+            left: 0.5em;
+        }
+        &.owns .biz-setting{
+            display: inline-block;
+        }
+        .hr{
+            position: relative;
+            width: 100%;
+            left: -(@iconW+10px);
+            height: 1px;
+            background-color: #999;
+            overflow: visible;
+            .icon{
+                position: absolute;
+                right: -(@iconW+10px);
+                top: -@iconW/2;
+                .tst();
+            }
+        }
+        ul{
+            list-style: none;
+            height: auto;
+            padding: 0;
+            margin: @bookMLR 0 0 0;
+            .tst();
+            .clear();
+            
+            li{
+                position: relative;
+                float: left;
+                height: @bookW;
+                width: @bookW;
+                margin: 0 @bookMLR 20px;
+                // background-color: @bookBGC;
+                cursor: pointer;
+                background-repeat: no-repeat;
+                // tobe continue```
+                .tst();
+
+                .bookname{
+                    width: 120px;
+                    // height: 40px;
+                    margin: 40px auto 0 auto;
+                    padding: 10px 5px;
+                    background-color: fadeout(@asideBGC, 35%);
+                    h4{
+                        margin: 0;
+                        color: #fff;
+                        text-align: center;
+                        font-weight: normal;
+                        font-size: 14px;
+						max-height: 80px;
+						overflow: hidden;
+						padding: 0 2px;
+						line-height: 1.4;
+                    }
+                }
+                .personalgroup-setting, .bizgroup-setting{
+                    position: absolute;
+                    bottom: 2px;
+                    right: 2px;
+                    height: 46px;
+                    width: 46px;
+                    cursor: pointer;
+                    background-color: @asideBGC;
+                    .bdr( 12px 0 0 0; );
+					.opacity(20);
+					.tst();
+					&:hover {
+						.opacity(50);
+					}
+                    .icon{
+                        position: relative;
+                        top: 12px;
+                        left: 12px;
+                    }
+                }
+                // biz的群组设置默认不显示
+                .bizgroup-setting{
+                    display: none;
+                }
+            }
+            li.personal-kb{
+                background-image: url('../img/personal-kb.png');
+                .personalgroup-setting{
+                    display: none;
+                }
+            }
+            li.tbc{
+                background-image: url('../img/new-group.png') !important;
+                background-position: 6px;
+                .bookname, .personalgroup-setting, .bizgroup-setting{
+                    display: none;
+                }
+
+            }
+            li.personal-group{
+                background-image: url('../img/personal-group.png');
+            }
+            li.biz-group{
+                background-image: url('../img/biz-group.png');
+            }
+        }
+    }
+    .kb.owns ul li{
+        .bizgroup-setting{
+            display: block;
+        }
+        &.tbc .bizgroup-setting{
+            display: none;
+        }
+    }
+
+    .kb.collapse{
+        // height auto不能成为transition
+        .hr{
+            .icon{
+                .tsf(rotate(180deg));
+            }
+        }
+        ul{
+            height: 0;
+            overflow: hidden;
+        }
+    }
+}
+
+#main.index #index{
+    // height: auto;
+    padding:  25px 55px 0 25px;
+    overflow: auto;
+    bottom: 0;
+    display: block;
+    z-index: 1550;
+	.opacity(100);
+    // bottom值 自动为 没有缓动 立即执行
+    .tst( opacity 250ms ease; );
+}

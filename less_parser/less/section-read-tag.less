@@ -1,0 +1,249 @@
+@import "config.less";
+section#read .content .noteaddon-ctn{
+    position: relative;
+    z-index: 1100;
+    padding: 12px @readP 4px;
+    border: none;
+    border-bottom: 1px dotted @noteAddonBBC;
+    border-top: 1px solid @noteAddonBBC*0.9;
+    background-color: @menuTreeBGC;
+    .boxshd( 0 -3px 4px -4px rgba(0,0,0,0.15););
+    .box-sizing();
+    // background-color: #95C11A;
+
+    .taglist, .attachlist, .category-ctn{
+        // height: 20px;
+        min-height: 24px;
+        &:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .indicator{
+            display: block;
+            height: 100%;
+            line-height: 18px;
+            font-size: 12px;
+            float: left;
+            color: #999;
+            width: @addonListPreW;
+        }
+        #no-tag, #no-attach{
+            width: 200px;
+            font-size: 12px;
+            color: #999;
+            position: relative;
+            top: -3px;
+        }
+        #addTagBtn, #addAttachBtn{
+            display: none;
+            float: left;
+            width: @addTagBtnW;
+            height: 22px;
+        }
+        span.more{
+            display: none;
+            float: right;
+            width: @addonListMoreW;
+            font-size: 12px;
+            line-height: 20px;
+            color: #999;
+            text-align: right;
+            cursor: pointer;
+        }
+    }
+    .category-ctn{
+        position: relative;
+        display:none;
+        font-size: 12px;
+        #note-cate{
+            float: left;
+            height: 100%;
+            // margin-top: 3px;
+            line-height: 18px;
+            color: #999;
+            cursor: pointer;
+        }
+        #cate-select{
+			height: 0;
+            top: 22px;
+            width: 350px;
+			overflow: auto;
+			background-color: @edittagCtnBGC;
+			border: 1px solid @edittagCtnBC;
+            .tst(  opacity 300ms ease; z-index 0ms ease 300ms; height 0ms ease 300ms; )
+        }
+        &.edit #cate-select{
+			min-height: 220px;
+			height: auto;
+            .opacity(100);
+            z-index: 400;
+            .tst( opacity 300ms ease; );
+        }
+    }
+    #tag-ul, #attach-ul{
+        min-height: 20px;
+        display: block;
+        overflow: hidden;
+        padding: 0 10px 0 0;
+        margin: -1px 0 0 @addonListPreW;
+        list-style: none;
+        .box-sizing();
+        .tst();
+        // .clear();
+
+        li{
+            font-size: 12px;
+            line-height: 14px;
+
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .taglist{
+        position: relative;
+        #tag-ul{
+            min-height: 20px;
+            padding: 1px 0 0 2px;
+            height: 20px;
+            // background-color: #accded;
+            &.more{
+                // overflow: auto;
+                height: auto;
+            }
+            li{
+                display: block;
+                float: left;
+                max-width: 100px;
+                padding: 1px 12px;
+                margin: 0 6px 6px 0;
+                color: #555;
+                background-color: @tagLiBGC;
+                .bdr(10px);
+                .boxshd( 0 0 2px rgba(0,0,0,0.25); );
+                .tst(all 100ms ease);
+            }
+            li.raw{
+                font-size: 0;
+                &.addli{
+                    font-size: 12px;
+                }
+            }
+        }
+        
+        #edittag-ctn{
+            top: 22px;
+            height: 0;
+            min-height: 0;
+            width: 350px;
+            padding: 0px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: @edittagCtnBGC;
+            border: 1px solid @edittagCtnBC;
+            .opacity(0);
+            .tst( opacity 300ms ease; z-index 0ms ease 300ms; height 0ms ease 300ms;);
+            &:before{
+                opacity: 0;
+            }
+
+            #stop-edittag{
+                float: right;
+                margin-top: 6px;
+                margin-right: 6px;
+            }
+            ul#tageditor-ul{
+                margin: 0;
+                padding: 5px 10px;
+                color: #fff;
+                li{
+                    position: relative;
+                    display: inline-block;
+                    padding: 6px 8px;
+                    margin: 5px 10px 5px 0px;
+                    color: @tagC;
+                    background-color: @tagNotInBGC;
+                    border: 1px solid @tagNotInBC;
+                    cursor: pointer;
+                    font-size: 12px;
+
+                    max-width: 130px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+
+                    .bdr(0px);
+                    .tst();
+                }
+                li.in{
+                    // padding-right: 12px + 8px;
+                    background-color: @tagInBGC;
+                    border: 1px solid @tagInBC;
+                    text-shadow: 0 0 1px rgba( 255,255,255,0.375 );
+                }
+            }
+            #newtag-ctn{
+                position: relative;
+                height: 50px;
+                margin: 0;
+                border: none;
+                border-top: 1px solid @newTagCtnBC;
+                background-color: @newTagCtnBGC;
+                #newtag-input{
+                    position: absolute;
+                    top: 10px;
+                    bottom: 10px;
+                    left: 12px;
+                    right: 12px;
+//                    width: 326px;
+                    margin: 0;
+                    padding: 0.25em 0.75em;
+                    height: 30px;
+                    outline: none;
+                    color: @nteTagInputC;
+                    border: 1px solid @newTagInputBC;
+                    .box-sizing();
+                    &:focus{
+                        border: 1px solid @newTagInputFocusBC;
+                        color: @nteTagInputFocusC;
+                    }
+                }
+            }
+// newtag-input
+// confirm-newtag
+        }
+        &.notags {
+            display:none;
+        }
+        &.tag-editable {
+            display:block;
+        }
+        &.tag-editing #edittag-ctn{
+            height: auto;
+            min-height: 80px;
+            z-index: 1100;
+            .opacity(100);
+            .tst( opacity 300ms ease;);
+            &:before{
+                opacity: 1;
+            }
+        }
+
+        &.tag-editable{
+            #addTagBtn{
+                display: inline-block;
+            }
+            #tag-ul{
+                margin: 0 0 0 @addonListPreW + @addTagBtnW;
+                li {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+}

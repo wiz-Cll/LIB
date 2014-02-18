@@ -1,0 +1,225 @@
+@import "config.less";
+
+@cmtTextLeft: @readP + @avatarH + 8px;
+@cmtTextRight: 45px + 20px;
+@cmtTextPadding: 6px;
+#comment-ctn{
+    background-color: #fff;
+    #comment_text_div{
+        position: relative;
+        height: 60px;
+        padding: 0 @readP;
+        // padding-left: @readP + @avatarH/2;
+        padding-left: @cmtTextLeft;
+        padding-right: @cmtTextRight;
+        .box-sizing();
+        #comment_user_icon{
+            position: absolute;
+            left: @avatarH/2;
+            z-index: 800;
+            float: left;
+            width: @avatarH;
+            height: @avatarH;
+            .bdr( @avatarH/2 );
+        }
+		/*-----------------------@ AutoComplete--------------------------*/
+		#comment_text, .commentTxtForCaret {
+            width: 100%;
+            padding: @cmtTextPadding;
+            height: 60px;
+            outline: none;
+
+            resize: none;
+
+            background-color: #fff;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            color: rgba(0,0,0,.75);
+            // display: block;
+            font-size: 12px;
+            line-height: 1.5;
+            .box-sizing();
+			&:focus {
+				// -webkit-box-shadow: 0 0 5px #999999;
+				// -moz-box-shadow: 0 0 5px #999999;
+				// box-shadow: 0 0 5px #999999;
+	//            border-color: #999999;
+	//            background: #fafafa;
+				outline: none;
+       		 }
+		}
+		.commentTxtForCaret {
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0;
+			padding: @cmtTextPadding 0;
+			padding-left: @cmtTextLeft + @cmtTextPadding;
+			padding-right: @cmtTextRight + @cmtTextPadding;
+			z-index: -1;
+			filter: alpha(opacity=0);
+			opacity: 0;
+			word-wrap: break-word;
+			//				word-break: break-all;
+			color:rgb(165, 213, 236);
+			overflow: auto;
+			line-height: 18px;
+
+			b {
+				display: inline-block;
+				margin-left: -10px;
+				width: 10px;
+				overflow: hidden;
+			}
+		}
+		/*-----------------------@ AutoComplete--------------------------*/
+    }
+	.commentTxtCountInfo-ctn {
+		padding: 4px 0 4px @cmtTextLeft;
+		#commentTxtCountInfo {
+			font-size: 12px;
+			color: #988B6B;
+			&.alert {
+				color: red;
+			}
+		}
+	}
+    .comment-btn-div{
+        position: relative;
+        margin-right: -@avatarH/2 + 10px;
+        top: -60px;
+        #comment_btn{
+            float: right;
+            height: 60px;
+            font-size: 14px;
+            padding-top: 22px;
+            margin-right: @readP + 10px;
+            color: #fff;
+            text-decoration: none;
+            border-left: none;
+        }
+    }
+
+    #comment_list{
+        margin: 0;
+        padding: 10px 20px;
+        list-style: none;
+        .comment-list-item{
+            padding: 3px 0;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #555;
+            &:after, .comment-item-content:after {
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+
+            .cmt-ctt{
+                margin-left: 10px;
+            }
+
+            .user-icon{
+                float: left;
+                position: relative;
+                top: 0;
+                width: @avatarH;
+                height: @avatarH;
+                margin-right: 8px;
+                .bdr( @avatarH/2 );
+            }
+            .comment-user{
+                float: left;
+                margin-right: 10px;
+                line-height: 1.35;
+                color: desaturate(@headerBGC, 15%);
+            }
+            .comment-doc{
+                word-wrap: break-word;
+                margin: 0 0 0 @avatarH;
+                line-height: 1.35;
+            }
+            .addon{
+                margin: 8px 0 0 @avatarH;                
+                font-size: 12px;
+                color: #988B6B;
+            }
+            .comment-time{
+                // display: inline-block;
+                float: left;
+                font-size: 12px;
+                line-height: 1.35;
+                margin: 0;
+            }
+            .comment-delete,  .comment-reply{
+                text-decoration: none;
+                margin-left: 2em;
+                font-size: 12px;
+                color: #988B6B;
+                &:hover{
+                    color: @headerBGC;
+                }
+                // float: left;
+            }
+        }
+    }
+    #no-cmt{
+        margin-left:25px;
+		position: relative;
+		top: 20px;
+        font-size: 12px;
+        color: #aaa;
+    }
+    
+}
+/*-----------------------@ AutoComplete--------------------------*/
+.content .atWrap {
+	display:none;
+	-webkit-animation-name: opacity;
+	-webkit-animation-duration: 0.3s;
+	-webkit-animation-timing-function: ease-in-out;
+	width: 280px;
+	position: absolute;
+	z-index: 1300;
+	line-height: 1.231;
+	border: 1px solid #ADADAD;
+	overflow-x: hidden;
+	background: #fff;
+	font-size: .8em;
+	.tips {
+		margin: 0 1px 1px;
+		padding: 5px 8px 4px;
+		color: #999;
+		background: #F5F5F5;
+	}
+	.autoCmt {
+		max-height: 242px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		ul {
+			padding: 0;
+			margin: 0;
+			li {
+				height: 20px;
+				overflow: hidden;
+				margin: 1px 0 2px;
+				white-space: nowrap;
+				cursor: pointer;
+				&.on {
+					background: #D2E9FA;
+				}
+				a {
+					display: inline-block;
+					padding: 3px 0 0 5px;
+					height: 17px;
+					_zoom: 1;
+					color: #333;
+				}
+			}
+
+		}
+	}
+}
+/*-----------------------@ AutoComplete--------------------------*/

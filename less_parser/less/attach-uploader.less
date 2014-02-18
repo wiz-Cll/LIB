@@ -1,0 +1,191 @@
+@import "config.less";
+
+@btnBorderC: #2385c3;
+
+#attach-content{
+    .user-select();
+    color: #999;
+    .top{
+        z-index: 400;
+        h1{
+            margin: 0;
+            font-size: 24px;
+            text-align: left;
+            color: #444;
+        }
+    }
+    .middle{
+        position: relative;
+        height: 150px;
+        width: 100%;
+        padding: 10px;
+        .box-sizing();
+
+
+        #dnd-uploader, #form-uploader{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 0;
+        }
+        #dnd-uploader{
+            display: none;
+            top: 10px;
+            left: 20px;
+            bottom: 0px;
+            right: 20px;
+            padding-top: 3px;
+            border: 2px dashed rgba( 200,200,200,0.75 );
+            // background-color: #accded;
+            .bdr(10px);
+            // 通过给transition加delay, 破解"在#form-uploader内部不同元素建dragover导致出现上一个元素的dragleave进而触发相应的样式改变"的问题~
+            .tst(all 300ms ease 50ms);
+
+            #drag-receiver p{
+                margin: 12px 0 0 0;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            #upload-status{
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 10px;
+                height: 36px;
+                overflow: hidden;
+                #uploadprogress{
+                    position: absolute;
+                    top: 50px;
+                    opacity: 0;
+                    .tst();
+                }
+                #uploadprogress{
+                    width: 90%;
+                    left: 5%;
+                    margin-left: 0;
+                    right: 5%;
+                }
+                &.uploading #uploadprogress{
+                    top: 16px;
+                    opacity: 1;
+                }
+                &.uploaded #uploadprogress{
+                    top: -14px;
+                    opacity: 0;
+                }
+            }
+        }
+        #dnd-uploader.active{
+            border-color: fadeout( @headerBGC, 20% );
+            background-color: fadeout( @headerBGC, 70% );
+        }
+
+        #form-uploader{
+            // background-color: red;
+
+            #uploader-input, #docguid-input, #token-input, #kbguid-input{
+                display: none;
+            }
+            #ghost-btn, #repick-preventer{
+                width: 100px;
+                padding: 5px 15px;
+                margin: 20px auto 0;
+                color: #fff;
+                border: 1px solid @btnBorderC;
+                background-color: @headerBGC;
+                cursor: pointer;
+                .box-sizing();
+                p{
+                    margin: 0;
+                    text-align: center;
+                    font-size: 16px;
+                    // background-color: blue;
+                }
+            }
+            #repick-preventer{
+				cursor: default;
+                position: absolute;
+                display: none;
+				top: 3px;
+				left: 0;
+				right: 0;
+            }
+            #file-content{
+                margin: 8px 0 0 0;
+                text-align: center;
+                // background-color: green;
+            }
+            &.uploading{
+                #repick-preventer{
+                    display: block;
+                }
+            }
+        }
+    }
+    .bottom{
+		padding-right: 0;
+        .btngroup{
+            float: right;
+            #submit-upload-btn, #cancel-upload{
+                height: auto;
+                margin: 8px 14px 4px 0;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                font-size: 14px;
+            }
+            #submit-upload-btn{
+                margin-right: 8px;
+            }
+        }
+    }
+    #sys-msg{
+        top: 0;
+        z-index: 300;
+		&.active{
+			top: 10px*2 + 24px + 7px;
+		}
+        #_wiz_error_div, #_wiz_warning_div, #_wiz_suc_div{
+			top: 0;
+            z-index: 200;
+			min-height: @msgH;
+			width: 100%;
+			padding: (floor(@msgH - 16px)/2)  0 (floor(@msgH - 16px)/2) 0;
+            .boxshd( 0 0 0 #000);
+        }
+//
+//        &.success #_wiz_suc_div, &.error #_wiz_error_div, &.warning #_wiz_warning_div{
+//            z-index: 300;
+//        }
+    }
+}
+#attach-content.modern{
+    #dnd-uploader{
+        display: block;
+    }
+    // 在modern的模式下,使两个uploader的区域是一致的,这样可以防止出现"dragenter/dragout"同时出现的状况:
+    //      两个节点重叠但不完全重叠, enter这个就leave了那个,导致绑定的dragenter/drgaleave的事件先后触发,样式晃动...
+    #form-uploader{
+        top: 10px;
+        left: 20px;
+        bottom: 0px;
+        right: 20px;
+        padding-top: 3px;
+        // border: 2px dashed rgba( 200,200,200,0.75 );
+        .bdr(10px);
+         #ghost-btn, #repick-preventer{
+            width: 100px;
+            padding: 5px 15px;
+            margin: (20px+(20px-10px)+(15-3px)) auto 0 auto;
+        }
+    }
+    .bottom{
+        border-top-style: none;
+        border-bottom-style: none;
+    }
+    .middle{
+
+    }
+}

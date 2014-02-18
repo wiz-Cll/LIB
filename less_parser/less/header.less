@@ -1,0 +1,373 @@
+@import "config.less";
+
+header{
+    position: relative;
+    z-index: @headerZindex;
+    height: @headerH;
+    width: @headerW;
+    padding: 0;
+    border-bottom: @headerBBH solid @headerBBC;
+
+    background-color: @headerBGC;
+    color: #fff;
+    // overflow: hidden;
+    .box-sizing();
+
+    #sc-entry{
+        float: left;
+        height: 100%;
+        // width: Ceil(@headerH/2.7) ;
+
+        width: 64px;
+        padding: 0 @headerH*0.4;
+        border-right: 1px solid @headerBBC;
+        // background-color: ;
+
+        cursor: pointer;
+
+        &:hover{
+            background-color: @headerBBC;
+        }
+
+        ul{
+            position: relative;
+            list-style: none;
+            padding: 0;
+            height: 100%;
+            margin-top: 0%;
+            // background-color: rgba(0,0,0,0.25);
+            li{
+                position: absolute;
+                width: 100%;
+                height: @scEntryLiH;
+                background-color: #fff;
+				.opacity(100);
+                .tst(top @liTopT ease  @liRotateT; transform @liTopT ease; width @liTopT ease; );
+                .tsf-o(0 50%;);
+
+                &.iterm1{
+                    top: @scEntryUlPT;
+                }
+                &.iterm2{
+                    top: @scEntryUlPT + @scEntryLiH*1 + @scEntryLiTop*1;
+                    // .tst(opacity 0ms ease @liRotateT);
+                }
+                &.iterm3{
+                    top: @scEntryUlPT + @scEntryLiH*2 + @scEntryLiTop*2;
+                }
+            }
+        }
+
+        body.focus-sidebar & ul{
+            li.iterm1, li.iterm3{
+                width: 40%;
+                top: @scEntryUlPT + @scEntryLiH*1 + @scEntryLiTop*1;
+                .tsf( rotate(@scEntryRotate); );
+                .tst( top @liTopT ease;transform @liRotateT ease @liTopT; width @liTopT ease;);
+                .bdr( 50% 0 0 50%;);
+                // .tst( top @liTopT ease; -webkit-transform @liRotateT ease @liTopT;);
+            }
+            li.iterm2{
+                width: 90%;
+                // .opacity(0);
+                // .tst( opacity 0ms ease @liTopT;);
+            }
+            li.iterm3{
+                .tsf( rotate(-@scEntryRotate); );
+                // top: @scEntryUlPT + @scEntryLiH*1.5 + @scEntryLiTop*1;
+            }
+        }
+    }
+
+    #kb-info{
+		position: absolute;
+		left: 64px;
+		overflow: hidden;
+		height: 100%;
+        margin-left: 0px;
+        padding-left: @mainP;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform-style: preserve-3d;
+		cursor: pointer;
+		&:hover {
+			background-color: @headerBBC;
+		}
+        // TODO biz/group名称和路径应该是底部对齐的  这个需要细节调整
+        h3, p{
+            float: left;
+            margin: 0;
+            // line-height: @headerH - 6px;
+            font-weight: normal;
+        }
+        h3{
+            font-size: 16px;
+            line-height: 16px;
+            margin-top: (@headerH - 16px )/2;
+			white-space: nowrap;
+			float: left;
+        }
+        // p会有inline-block带来的一些间隙
+        p#folder{
+			float: left;
+            font-size: 14px;
+            line-height: 14px;
+            margin-top: (@headerH - 16px )/2 - 1px;
+            position: relative;
+            vertical-align: top;
+            padding-right: @mainP;
+            margin-left: 5px;
+            .box-sizing();
+
+            -webkit-backface-visibility: hidden;
+            -webkit-transform-style: preserve-3d;
+			span {
+				white-space: nowrap;
+				display: inline-block;
+			}
+            #groupListSwitch{
+                position: relative;
+                top: 3px;
+            }
+
+            #main.index & #groupListSwitch{
+                .tsf( rotate(180deg) );
+            }
+        }
+    }
+    #user-info{
+        height: 100%;
+        float: right;
+        display: table-row;
+		position: absolute;
+		right: 0;
+		background-color: @headerBGC;
+        
+        #user-msg, #avatar{
+            display: table-cell;
+            padding: 0 20px;
+            height: @headerH;
+            vertical-align: middle;
+
+            // display: inline-block;
+        }
+        #user-msg{
+            height: 40px;
+            border: 0 none @userInfoBC;
+            border-left: 1px solid @userInfoBC;
+            border-right: 1px solid @userInfoBC;
+
+            cursor: pointer;
+            img{
+                position: relative;
+                top: 3px;
+                height: 20px;
+                width: 20px;
+                background-color: @userInfoBC;
+                border: none;
+            }
+            .icon-middle{
+                position: relative;
+                top: 2px;
+            }
+            span{
+                position: relative;
+                font-size: 14px;
+                top: -4px;
+            }
+            #pop-user-msg{
+                top: 70px;
+                right: 50px;
+                height: 0;
+                width: @userMsgPopW;
+                background-color: #fff;
+                .boxshd( 0 0 3px rgba(0,0,0,0.5););
+                cursor: default;
+            }
+			&.hide {
+				display:none;
+			}
+			&:hover {
+				background-color: @headerBBC;
+			}
+            &.active {
+				#pop-user-msg{
+					// background-color: #accded;
+					height: @userMsgPopH;
+					.opacity(100);
+					z-index: 2000;
+					.tst( opacity 250ms ease;);
+
+					&:before{
+						display: block;
+					}
+				}
+			}
+
+        }
+        #avatar{
+            height: @headerH;
+//            width: @avatarH;
+            // padding-right: 0;
+            cursor: pointer;
+            img{
+                width: @avatarH;
+                height: @avatarH;
+                border-radius: @avatarH/2;
+				margin-top: 3px;
+            }
+			span#pop-user-name {
+				display: none;
+				font-size: 14px;
+				top: -14px;
+				position: relative;
+				margin-left: 6px;
+			}
+
+            #pop-user-setting{
+                // top: @headerH + @headerBBH;
+                top: @headerH - 2px;
+                right: 0px;
+                height: 0;
+                .opacity(0);
+                overflow: hidden;
+                min-width: 150px;
+                max-width: 220px;
+                background-color: #fff;
+                border: 2px solid @headerBGC;
+                cursor: default;
+                .boxshd( 0 0 3px rgba(0,0,0,0.5););
+				.tst( height 0 ease;);
+                
+                &:before{
+                    display: none;
+                    left: auto ;
+                    right: @avatarH/2 - @triLW/2;
+                }
+
+                ul{
+                    padding: 0;
+                    margin: 0;
+                    font-size: 14px;
+                    list-style: none;
+
+                    li{
+                        padding: 12px 20px;
+                        width: auto;
+                        // color: #666;
+                        border-bottom: 1px solid #ddd;
+                        .tst();
+                        
+                        a{
+                            display: block;
+                            width: 100%;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            text-decoration: none;
+                            // color: @headerBGC;
+                            color: #888;
+							outline: none;
+                            .tst();
+                            &#account_setting{
+                                .icon{
+                                    // display: none;
+                                }
+                            }
+                            .icon{
+                                position: relative;
+                                top: 4px;
+                            }
+                            span{
+                                position: relative;
+                                top: -3px;
+                                margin-left: 4px;
+                            }
+
+                        }
+                        &#username-ctn{
+                            background-color: #ececec;
+                            a#user-name{
+                                color: #666;
+                            }
+                            &:hover a#user-name{
+                                color: #666;
+                            }
+                        }
+                        &#bizManager-ctn:hover {
+                            .icon-protect{
+                                .iconPos(6, 20);
+                            }
+                        }
+                        &:hover{
+                            background-color: #ececec;
+                            a{
+								color: #272727;
+                                .icon-user{
+                                    .iconPos(2, 51);
+                                }
+								&.not-verify .icon.icon-user{
+									.iconPos(4, 51);
+								}
+                                .icon-invite{
+                                    .iconPos(6, 15);
+                                }
+                                .icon-logout{
+                                    .iconPos(6, 16);
+                                }
+                                
+                            }
+                        }
+                        #account_setting{
+                            .icon-warn{
+                                display: none;
+                                margin-left: 0.5em;
+                            }
+                            &.not-verify{
+                                .icon-warn{
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.active {
+				background-color: @headerBBC;
+				#pop-user-setting{
+
+					//                overflow: visible;
+					// height: @userSettingPopH;
+					height: auto;
+					z-index: 2000;
+					.opacity(100);
+					.tst( opacity 250ms ease;);
+				}
+			}
+        }
+    }
+}
+
+// hack for webkit 
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    header{
+        #sc-entry{
+            ul{
+                li{
+                    .tst(top @liTopT ease  @liRotateT; -webkit-transform @liTopT ease; width @liTopT ease;);
+                }
+            }
+            body.focus-sidebar & ul{
+                li.iterm1, li.iterm3{
+                    top: @scEntryUlPT + @scEntryLiH*1 + @scEntryLiTop*1;
+                    .tsf( rotate(@scEntryRotate); );
+                    .tst( top @liTopT ease; -webkit-transform @liRotateT ease @liTopT; width @liTopT ease; );
+                    // .tst( top @liTopT ease; -webkit-transform @liRotateT ease @liTopT;);
+                }
+                li.iterm3{
+                    .tsf( rotate(-@scEntryRotate); );
+                }
+            }
+        }
+    }
+
+}
